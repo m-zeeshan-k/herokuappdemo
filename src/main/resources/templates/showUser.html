@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" >
+<title>Home</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<center><h1>User List</h1></center>
+
+<p>
+    <span th:each="index : ${users}">
+     <span th:text="${index.id}"></span>
+        <span th:text="${index.name}"></span>
+         <span th:text="${index.city}"></span><br>
+    </span>
+</p>
+
+<a th:href="@{/}">Back to home</a>
+
+</body>
+</html>
