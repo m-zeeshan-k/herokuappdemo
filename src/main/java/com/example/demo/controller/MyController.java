@@ -3,29 +3,30 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 import com.example.demo.dao.UserRepository;
 import com.example.demo.entity.User;
 
-@RestController
+@Controller
 public class MyController {
 
 	@Autowired
 	UserRepository userRepository;
 	
-	@GetMapping("/")
+	@RequestMapping(value = "/")
 	public String loadHome() {
 	return "home";	
 	}
 	
-	@PostMapping("/save")
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@ModelAttribute User user,Model m) {
 		
 		User user2 = userRepository.save(user);
@@ -35,7 +36,7 @@ public class MyController {
 	}
 	
 	
-	@GetMapping("/users")
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String get(Model m) {
 		
 		List<User> users = userRepository.findAll();
